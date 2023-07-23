@@ -1,7 +1,6 @@
 import cors from "cors";
 import express from "express";
 import pkg from "pg";
-import { seedChickens } from "./seedChickens.js";
 const { Pool } = pkg;
 
 const pool = new Pool({
@@ -15,8 +14,6 @@ const pool = new Pool({
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-let chickens = [...seedChickens];
 
 app.get("/all", async (req, res) => {
   const { rows } = await pool.query(
