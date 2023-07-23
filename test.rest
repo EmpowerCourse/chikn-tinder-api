@@ -1,0 +1,31 @@
+GET http://localhost:5000/all
+
+
+###
+POST http://localhost:5000/new
+Content-Type: application/json
+
+{
+  "name": "New Chicken",
+  "location": "New Location",
+  "imgUrl": "",
+  "description": "New Description"
+}
+
+
+###
+PUT http://localhost:5000/updoot
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+
+###
+PUT http://localhost:5000/downdoot
+Content-Type: application/json
+
+{
+  "id": 1
+}
