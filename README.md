@@ -24,7 +24,7 @@ This endpoint retrieves all chickens, sorted by the score (the difference betwee
 - `id`: The unique identifier of the chicken.
 - `name`: The name of the chicken.
 - `location`: The location of the chicken.
-- `imgUrl`: The image URL of the chicken.
+- `imgurl`: The image URL of the chicken.
 - `description`: The description of the chicken.
 - `updoots`: The number of updoots (upvotes) the chicken has received.
 - `downdoots`: The number of downdoots (downvotes) the chicken has received.
@@ -36,7 +36,7 @@ This endpoint creates a new chicken. The request body should be a JSON object wi
 
 - `name`: The name of the chicken (required).
 - `location`: The location of the chicken (required).
-- `imgUrl`: The image URL of the chicken (required).
+- `imgurl`: The image URL of the chicken (required).
 - `description`: The description of the chicken (required).
 
 Upon success, the API will respond with the ID of the created chicken and a success message. If any required field is missing, the API will respond with a 400 status code and a message indicating invalid data.
