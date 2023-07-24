@@ -62,7 +62,7 @@ Upon success, the API will respond with the updated chicken object and a success
 This endpoint deletes a chicken. The request body should be a JSON object with the following property:
 
 - `id``: The ID of the chicken to delete (required).
-- 
+
 Upon success, the API will respond with a success message. If the chicken is not found, the API will respond with a 404 status code and a message indicating that the chicken was not found.
 
 ## Errors
