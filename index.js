@@ -12,9 +12,9 @@ const pool = new Pool({
   database: process.env.DB_NAME || "chikn_tinder",
   password: process.env.DB_PASS || "postgres",
   port: process.env.DB_PORT || 5432,
-  ssl: {
-    rejectUnauthorized: false, // don't verify SSL certificate
-  }
+  // ssl: {
+  //   rejectUnauthorized: false, // don't verify SSL certificate
+  // },
 });
 
 const API_KEY = process.env.API_KEY;
@@ -40,6 +40,32 @@ app.get("/all", async (_, res) => {
       `SELECT *, (updoots - downdoots) as score FROM chickens ORDER BY score DESC, name`
     );
     res.json(rows).end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
+app.get("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  // Validate data
+  if (!id) {
+    res.status(400).json({ message: "Invalid data" });
+    return;
+  }
+
+  try {
+    const { rows } = await pool.query(
+      `SELECT *, (updoots - downdoots) as score FROM chickens WHERE id = $1`,
+      [id]
+    );
+    const chicken = rows[0];
+    if (!chicken) {
+      res.status(404).json({ message: "Chicken not found" });
+      return;
+    }
+    res.json(chicken).end();
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong" });
