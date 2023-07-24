@@ -14,6 +14,7 @@ The API uses environment variables for its configuration. The following environm
 - `DB_PASS`: Database password (default: 'postgres')
 - `DB_PORT`: Database port (default: 5432)
 - `PORT`: API listening port (default: 5000)
+- `API_KEY`: Requests must include this key in an "x-api-key" header.
 
 ## Endpoints
 
