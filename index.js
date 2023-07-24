@@ -12,9 +12,9 @@ const pool = new Pool({
   database: process.env.DB_NAME || "chikn_tinder",
   password: process.env.DB_PASS || "postgres",
   port: process.env.DB_PORT || 5432,
-  // ssl: {
-  //   rejectUnauthorized: false, // don't verify SSL certificate
-  // },
+  ssl: {
+    rejectUnauthorized: false, // don't verify SSL certificate
+  },
 });
 
 const API_KEY = process.env.API_KEY;
