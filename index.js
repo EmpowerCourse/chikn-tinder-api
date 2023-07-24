@@ -25,7 +25,6 @@ app.use(express.json());
 // Middleware for checking API Key
 app.use((req, res, next) => {
   const apiKey = req.headers["x-api-key"];
-  console.log(apiKey);
   if (!apiKey || apiKey !== API_KEY) {
     res.status(403).json({ message: "Forbidden. Invalid API Key." });
     return;
