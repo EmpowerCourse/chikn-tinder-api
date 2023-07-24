@@ -2,6 +2,9 @@ import cors from "cors";
 import express from "express";
 import pkg from "pg";
 const { Pool } = pkg;
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const pool = new Pool({
   user: process.env.DB_USER || "postgres",
@@ -11,9 +14,24 @@ const pool = new Pool({
   port: process.env.DB_PORT || 5432,
 });
 
+const API_KEY = process.env.API_KEY;
+console.log(API_KEY);
+
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+
+// Middleware for checking API Key
+app.use((req, res, next) => {
+  const apiKey = req.headers["x-api-key"];
+  console.log(apiKey);
+  if (!apiKey || apiKey !== API_KEY) {
+    res.status(403).json({ message: "Forbidden. Invalid API Key." });
+    return;
+  }
+  next();
+});
 
 app.get("/all", async (_, res) => {
   try {
