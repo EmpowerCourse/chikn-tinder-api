@@ -22,10 +22,10 @@ The API uses environment variables for its configuration. The following environm
 This endpoint retrieves all chickens, sorted by the score (the difference between the number of updoots and downdoots) in descending order and then by name. Each chicken object has the following properties:
 
 - `id`: The unique identifier of the chicken.
-- `name`: The name of the chicken.
-- `location`: The location of the chicken.
-- `imgurl`: The image URL of the chicken.
-- `description`: The description of the chicken.
+- `name`: The name of the chicken. (25 characters)
+- `location`: The location of the chicken. (25 characters)
+- `imgurl`: The image URL of the chicken. (500 characters)
+- `description`: The description of the chicken. (500 characters)
 - `updoots`: The number of updoots (upvotes) the chicken has received.
 - `downdoots`: The number of downdoots (downvotes) the chicken has received.
 - `score`: The score of the chicken, calculated as `updoots - downdoots`.
@@ -56,6 +56,13 @@ This endpoint downdoots (downvotes) a chicken. The request body should be a JSON
 - `id`: The ID of the chicken to downdoot (required).
 
 Upon success, the API will respond with the updated chicken object and a success message. If the chicken is not found, the API will respond with a 404 status code and a message indicating that the chicken was not found.
+
+### `DELETE /delete`
+This endpoint deletes a chicken. The request body should be a JSON object with the following property:
+
+- `id``: The ID of the chicken to delete (required).
+- 
+Upon success, the API will respond with a success message. If the chicken is not found, the API will respond with a 404 status code and a message indicating that the chicken was not found.
 
 ## Errors
 

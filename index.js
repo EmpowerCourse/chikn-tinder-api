@@ -90,6 +90,33 @@ async function vote(req, res, type) {
 app.put("/updoot", (req, res) => vote(req, res, "updoots"));
 app.put("/downdoot", (req, res) => vote(req, res, "downdoots"));
 
+app.delete("/delete", async (req, res) => {
+  const { id } = req.body;
+
+  // Validate data
+  if (!id) {
+    res.status(400).json({ message: "Invalid data" });
+    return;
+  }
+
+  try {
+    const { rowCount } = await pool.query(
+      `DELETE FROM chickens WHERE id = $1`,
+      [id]
+    );
+    if (rowCount === 0) {
+      res.status(404).json({ message: "Chicken not found" });
+      return;
+    }
+    res.status(200).json({
+      message: "Chicken deleted successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}...`);
