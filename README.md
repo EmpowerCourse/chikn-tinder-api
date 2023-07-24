@@ -2,7 +2,7 @@
 
 ## Overview
 
-Chikn Tinder API is an application backend for a brand new premiere dating and rating app for poultry which is going straight to the moon. It provides the ability to submit new chickens for rating, get a list of all chickens, and rate existing chickens with an updoot or downdoot.
+Chikn Tinder API is an application backend for a brand new premiere dating and rating app for poultry which is going straight to the moon. It provides the ability to submit new chickens for rating, get a list of all chickens, rate existing chickens with an updoot or downdoot, and delete submitted chickens.
 
 ## Configuration
 

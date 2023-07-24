@@ -29,3 +29,12 @@ Content-Type: application/json
 {
   "id": 1
 }
+
+
+###
+DELETE http://localhost:5000/delete
+Content-Type: application/json
+
+{
+  "id": 7
+}
